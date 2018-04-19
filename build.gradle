@@ -1,0 +1,27 @@
+group 'com.phonepay'
+version '1.0.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'com.mashape.unirest:unirest-java:1.4.9'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.4'
+}
+
+task createJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'PhonePay SDK',
+                'Implementation-Version': version
+    }
+
+    baseName = 'PhonePaySDK'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
