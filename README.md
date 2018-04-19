@@ -1,2 +1,5 @@
-# phonepay-server-sdk
-The PhonePay Server SDK provide easy access to phonepay gateway services. 
+# PhonePay Server SDK
+
+The PhonePay provides some api for business, We develop an sdk that allow you to call our api easily.
+
+    
