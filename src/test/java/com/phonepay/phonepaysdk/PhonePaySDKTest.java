@@ -1,6 +1,7 @@
 package com.phonepay.phonepaysdk;
 
 
+import com.phonepay.phonepaysdk.domain.APIToken;
 import com.phonepay.phonepaysdk.domain.OTP;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,5 +15,11 @@ public class PhonePaySDKTest {
                 .requestOTP();
 
         Assert.assertNotNull(otp);
+
+        APIToken apiToken = new PhonePaySDK()
+                .apiKey("13335761-d20b-4d7b-8703-91a962e3c2bd")
+                .requestApiToken();
+
+        Assert.assertNotNull(apiToken);
     }
 }

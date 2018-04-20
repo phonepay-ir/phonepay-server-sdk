@@ -1,5 +1,6 @@
 package com.phonepay.phonepaysdk;
 
+import com.phonepay.phonepaysdk.domain.APIToken;
 import com.phonepay.phonepaysdk.domain.OTP;
 import com.phonepay.phonepaysdk.domain.OTPRequest;
 import com.phonepay.phonepaysdk.network.HttpClient;
@@ -19,15 +20,14 @@ public class PhonePaySDK {
     }
 
     public OTP requestOTP() {
-        HttpClient httpClient = new HttpClient();
-
-
-        Object response = httpClient.sendRequest(apiKey,
+        return (OTP) new HttpClient().sendRequest(apiKey,
                 OTPRequest.Builder.with()
                         .phoneNumber(phoneNumber)
                         .build(), OTP.class
         );
+    }
 
-        return (OTP) response;
+    public APIToken requestApiToken() {
+        return (APIToken) new HttpClient().sendRequest(apiKey, null, APIToken.class);
     }
 }
